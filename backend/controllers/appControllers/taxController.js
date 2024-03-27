@@ -63,7 +63,7 @@ methods.update = async (req, res) => {
         result: null,
         message: 'You cannot disable the tax because it is the only existing one',
       });
-    } else {
+    } else if (!enabled && taxesCount === 1) {
       return res.status(401).json({
         success: false,
         result: null,
