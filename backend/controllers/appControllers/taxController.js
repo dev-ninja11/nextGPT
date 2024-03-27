@@ -63,6 +63,12 @@ methods.update = async (req, res) => {
         result: null,
         message: 'You cannot disable the tax because it is the only existing one',
       });
+    } else {
+      return res.status(401).json({
+        success: false,
+        result: null,
+        message: 'You cannot disable the tax because it is the only existing one',
+      });
     }
 
     const result = await Model.findOneAndUpdate({ _id: id }, req.body, { new: true });
